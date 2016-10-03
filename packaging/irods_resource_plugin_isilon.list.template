@@ -1,0 +1,60 @@
+# =-=-=-=-=-=-=-
+# variables for configuring the install
+# =-=-=-=-=-=-=-
+
+$OS_IRODS_ACCT=irods
+$OS_IRODS_HOME_DIR=/var/lib/irods
+$HADOOFUS_DIR=/lib
+$DOC_DIR=/usr/share/doc/libisilon
+$SCRIPT_DIR=/usr/share/libisilon/scripts
+
+$PRODUCT=EMC Isilon Resource Plugin for iRODS
+$COPYRIGHT=Copyright © 2016 by EMC Corporation, All Rights Reserved
+$VENDOR=Sk.iRODS.Support@emc.com
+$LICENSE_FILE=LICENSE.md
+$README_FILE=README.md
+$DESCRIPTION=EMC Isilon Resource Plugin for iRODS
+
+# =-=-=-=-=-=-=-
+# package definition
+# =-=-=-=-=-=-=-
+
+%product        $PRODUCT
+%copyright      $COPYRIGHT
+%vendor         $VENDOR
+%license        $LICENSE_FILE
+%readme         $README_FILE
+%description    $DESCRIPTION 
+%version        TEMPLATE_PLUGINVERSION TEMPLATE_PLUGINVERSIONINT
+
+# =-=-=-=-=-=-=-
+# dependecies
+# =-=-=-=-=-=-=-
+
+%format all
+
+# =-=-=-=-=-=-=-
+# actions
+# =-=-=-=-=-=-=-
+
+%postinstall ${SCRIPT_DIR}/postinstall.sh #&& echo $COPYRIGHT && cat $DOC_DIR/$LICENSE_FILE
+
+# =-=-=-=-=-=-=-
+# full file listing
+# =-=-=-=-=-=-=-
+
+# Libraries
+# Hadoofus
+f 755 root root ${HADOOFUS_DIR}/libhadoofus.so ${HADOOFUS_DIR}/libhadoofus.so
+# Resource plugin
+f 755 $OS_IRODS_ACCT $OS_IRODS_ACCT ${OS_IRODS_HOME_DIR}/plugins/resources/libisilon.so ./libisilon.so
+
+# Scripts
+d 755 root root ${SCRIPT_DIR} -
+f 755 root root ${SCRIPT_DIR}/postinstall.sh packaging/postinstall.sh
+
+# Documentation
+d 755 root sys ${DOC_DIR} -
+f 644 root sys ${DOC_DIR}/${README_FILE} ./${README_FILE}
+f 644 root sys ${DOC_DIR}/${LICENSE_FILE} ./${LICENSE_FILE}
+f 644 root sys ${DOC_DIR}/THIRD_PARTY_SOFTWARE_README.md ./THIRD_PARTY_SOFTWARE_README.md
