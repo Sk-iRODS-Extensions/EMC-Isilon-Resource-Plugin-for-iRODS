@@ -65,40 +65,36 @@ section below for details)
 
 ### Installing from manually built package
 
-**1)** Install the iRODS Development Tools for your version of iRODS and OS from
-[http://irods.org/download/](http://irods.org/download/)
+1. Install the iRODS Development Tools for your version of iRODS and OS from  
+	[http://irods.org/download/](http://irods.org/download/)
+2. Install the Hadoofus library from  
+	[https://github.com/cemeyer/hadoofus](https://github.com/cemeyer/hadoofus) 
+  
+	This Hadoofus library is required to connect with the Isilon HDFS interface.
+	We recommend using the <b> HEAD </b> version of the library
 
-**2)** Install the Hadoofus library from [https://github.com/cemeyer/hadoofus](https://github.com/cemeyer/hadoofus) 
-
-This Hadoofus library is required to connect with the Isilon HDFS interface.
-We recommend using the <b> HEAD </b> version of the library
-
-<b> NOTE: </b> you need to install the iRODS Development Tools and Hadoofus **only** on the
-machine where you are going to build the plugin. You **do not need** to install
-the libraries on every machine where you will use the plugin. Techically,
-you do need the Hadoofus library on each machine which will run the plug-in, but it is included in
+<b> NOTE: </b> you need to install the iRODS Development Tools and Hadoofus **only**
+on the machine where you are going to build the plugin. You **do not need** to install
+the libraries on every machine where you will use the plugin. Techically, you do need
+the Hadoofus library on each machine which will run the plug-in, but it is included in
 the package along with the resource plugin to save time and effort.
+3. `git clone *path to the plugin Git repository*`
+4. `cd irods_resource_plugin_isilon/packaging`
+5. `./build`
 
-**3)** `git clone *path to the plugin Git repository*`
+When the build is complete, you can find the package in the `irods_resource_plugin_isilon/build`
+directory
 
-**4)** `cd irods_resource_plugin_isilon/packaging`
+Install the package using the respective package manager. For example,  
+	on Ubuntu:  
+	`sudo dpkg -i irods-resource-plugin-isilon*.deb`
+  
+	on CentOS:  
+	`rpm -i irods-resource-plugin-isilon*.rpm`
 
-**5)** `./build`
-
-When the build is complete, you can find the package in the 
-`irods_resource_plugin_isilon/build` directory
-
-Install the package using the respective package manager. For example,
-	
-on Ubuntu:
-    `sudo dpkg -i irods-resource-plugin-isilon*.deb`
-
-on CentOS:
-    ```rpm -i irods-resource-plugin-isilon*.rpm```
-
-<b>NOTE: </b> You **MUST** install the plugin on every iRODS  server that you are going to access the Isilon from.
-
-**6)** create and configure corresponding iRODS resource (see [Configuring](#configuring)
+<b>NOTE: </b> You **MUST** install the plugin on every iRODS  server that you are going
+to access the Isilon from.
+6. Create and configure corresponding iRODS resource (see [Configuring](#configuring)
 section below for details)
 
 ### Installing manually built plugin alone
