@@ -77,25 +77,23 @@ section below for details)
 	**only** on the machine where you are going to build the plugin. You **do
 	not need** to install the libraries on every machine where you will use the
 	plugin. Techically, you do need the Hadoofus library on each machine which
-	will run the plug-in, but it is included in the package along with the
+	will run the plugin, but it is included in the package along with the
 	resource plugin to save time and effort.
-3. `git clone *path to the plugin Git repository*`
+3. `git clone https://github.com/Sk-iRODS-Extensions/EMC-Isilon-Resource-Plugin-for-iRODS.git`
 4. `cd irods_resource_plugin_isilon/packaging`
 5. `./build`
-
-When the build is complete, you can find the package in the `irods_resource_plugin_isilon/build`
+6. When the build is complete, you can find the package in the `irods_resource_plugin_isilon/build`
 directory
-
-Install the package using the respective package manager. For example,  
+7. Install the package using the respective package manager. For example,  
 	on Ubuntu:  
-	`sudo dpkg -i irods-resource-plugin-isilon*.deb`
+	```sudo dpkg -i irods-resource-plugin-isilon*.deb```
   
 	on CentOS:  
-	`rpm -i irods-resource-plugin-isilon*.rpm`
+	```rpm -i irods-resource-plugin-isilon*.rpm```
 
-<b>NOTE: </b> You **MUST** install the plugin on every iRODS  server that you are going
-to access the Isilon from.
-6. Create and configure corresponding iRODS resource (see [Configuring](#configuring)
+	<b>NOTE: </b> You **MUST** install the plugin on every iRODS  server that
+	you are going to access the Isilon from.
+8. Create and configure corresponding iRODS resource (see [Configuring](#configuring)
 section below for details)
 
 ### Installing manually built plugin alone
