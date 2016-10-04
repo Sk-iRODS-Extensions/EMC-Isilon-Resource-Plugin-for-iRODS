@@ -41,25 +41,25 @@ There are three options to install the plugin:
 
 1. install from a pre-built package
 2. build the package from the source code and install the resulting package
-3. build the plugin alone (without packaging) and put it in the appropriate
-place manually
+3. build the plugin alone (without packaging) and put it in the appropriate place
+manually
 
 <b>NOTE: </b> if you use one of the first two options, upon installation completion,
 you'll find product documentation (including this README.md file) in
 `/usr/share/doc/libisilon`.
 
 ### Installing from a pre-built package
-1. download the package (if available for your type and version of OS) from
+1. download the package (if available for your type and version of OS) from  
 	```not available yet```
-2. install it using respective package manager. For example,
-	on Ubuntu:
+2. install it using respective package manager. For example,  
+	on Ubuntu:  
 	```sudo dpkg -i irods-resource-plugin-isilon*.deb```
-
-	on CentOS:
-    ```rpm -i irods-resource-plugin-isilon*.rpm```
-
-	You should install the plugin on every iRODS Resource server that you
-	are going to access Isilon from
+  
+	on CentOS:  
+	```rpm -i irods-resource-plugin-isilon*.rpm```  
+  
+	You should install the plugin on every iRODS Resource server that you are
+	going to access Isilon from
 3. create and configure corresponding iRODS resource (see [Configuring](#configuring)
 section below for details)
 
