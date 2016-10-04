@@ -28,8 +28,8 @@ the suitability of this driver as a generic HDFS interface driver for iRODS.
 ## Core Features
 * A storage resource driver for Isilon on iRODS 4.1.9 and later
 * Object based access to an Isilon cluster: HDFS access which is JRE free
-* Better load balancing and in some cases better performance compared to NFS
-access (see first link under [External docs](#external-docs) below)
+* Better load balancing and in some cases better performance compared to NFS access
+(see first link under [External docs](#external-docs) below)
 * Support for using a single Isilon storage pool across multiple iRODS resource
 servers
 * Some client-side performance optimizations like read ahead
