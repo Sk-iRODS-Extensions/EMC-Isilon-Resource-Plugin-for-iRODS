@@ -2,13 +2,13 @@
 ### Version 1.0
 
 ## Table of contents
-- [Description](description)
-- [Core Features](core-features)
-- [Installing](installing)
-- [Configuring](configuring)
-- [Limitations and known problems](limitations-and-known-problems)
-- [External docs](external-docs)
-- [License](license)
+- [Description](#description)
+- [Core Features](#core-features)
+- [Installing](#installing)
+- [Configuring](#configuring)
+- [Limitations and known problems](#limitations-and-known-problems)
+- [External docs](#external-docs)
+- [License](#license)
 
 ## Description
 With this driver an EMC Isilon cluster can be registered into an iRODS grid
