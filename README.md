@@ -11,18 +11,19 @@
 - [License](#license)
 
 ## Description
-With this driver an EMC Isilon cluster can be registered into an iRODS grid
-as an object based storage resource. I/O to the resource is handled via the HDFS
-interface.
+With this driver an EMC Isilon cluster can be registered into an iRODS grid as an
+object based storage resource. I/O to the resource is handled via the HDFS interface.
 
-This driver does not require a Java runtime environment to use the HDFS
-interface. Instead the 'Hadoofus' library is required.
+This driver does not require a Java runtime environment to use the HDFS interface.
+Instead the 'Hadoofus' library is required.
 
-This driver can be used to integrate any HDFS based storage resource
-with iRODS. However, be aware that it has been tested with Isilon only. We have no knowledge about how it may or may not work with other HDFS storage devices.
+This driver can be used to integrate any HDFS based storage resource with iRODS.
+However, be aware that it has been tested with Isilon only. We have no knowledge
+about how it may or may not work with other HDFS storage devices.
 
-In the future we may add features and optimizations which are Isilon-specific. Other protocols supported
-by Isilon along with HDFS may also be utilized and could change the suitability of this driver as a generic HDFS interface driver for iRODS.
+In the future we may add features and optimizations which are Isilon-specific. Other
+protocols supported by Isilon along with HDFS may also be utilized and could change
+the suitability of this driver as a generic HDFS interface driver for iRODS.
 
 ## Core Features
 * A storage resource driver for Isilon on iRODS 4.1.9 and later
