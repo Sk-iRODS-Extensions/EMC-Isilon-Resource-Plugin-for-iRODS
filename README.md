@@ -64,7 +64,6 @@ you'll find product documentation (including this README.md file) in
 section below for details)
 
 ### Installing from manually built package
-
 1. Install the iRODS Development Tools for your version of iRODS and OS from
 [http://irods.org/download/](http://irods.org/download/)
 2. Install the Hadoofus library from
@@ -97,40 +96,32 @@ directory
 section below for details)
 
 ### Installing manually built plugin alone
-
-**1)** Install the iRODS Development Tools for your version of iRODS and OS from
+1. Install the iRODS Development Tools for your version of iRODS and OS from
 [http://irods.org/download/](http://irods.org/download/)
+2. Install the Hadoofus library from
+[https://github.com/cemeyer/hadoofus](https://github.com/cemeyer/hadoofus)
+  
+	This library is required to connect with the Isilon HDFS interface. We
+	recommend using the <b> HEAD </b> version of the library
+  
+	<b> NOTE: </b> you need to install iRODS Development Tools **only** on the
+	machine where you are going to build the plugin. You **do not need** to
+	install it on every machine where you are going to use the plugin, but you
+	**must** install Hadoofus manually on each iRODS server which will access the
+	Isilon cluster.
+3. `git clone https://github.com/Sk-iRODS-Extensions/EMC-Isilon-Resource-Plugin-for-iRODS.git`
+4. `cd irods_resource_plugin_isilon`
+5. `make` or `make debug` 
 
-**2)** Install the Hadoofus library from [https://github.com/cemeyer/hadoofus](https://github.com/cemeyer/hadoofus)
-
-
-This library is required to connect with the Isilon HDFS interface.
-We recommend using the <b> HEAD </b> version of the library
-
-<b> NOTE: </b> you need to install iRODS Development Tools **only** on the machine where
-you are going to build the plugin. You **do not need** to install it on every
-machine where you are going to use the plugin, but you **must** install
-Hadoofus manually on each iRODS server which will access the Isilon cluster.
-
-**3)** `git clone *path to the plugin Git repository*`
-
-**4)**  `cd irods_resource_plugin_isilon`
-
-**5)** `make` or `make debug` 
-
-Using the Debug target is extremely useful for debugging the
-plugin and logging its activity. When built with `debug` support, the plugin
-executes internal sanity checks during its work and also logs its activity to the 
-standard iRODS log file. Corresponding lines of the file will be marked with the
-`ISILON RESC` prefix
-
-**6)**  When the compilation process is finished, you can find the `libisilon.so` file in
-the source code upper level directory. Copy this file to
-`{iRODS_home}/plugins/resources/`
-
-**7)** Create and configure corresponding iRODS resource (see [Configuring](#configuring)
+	Using the Debug target is extremely useful for debugging the plugin and logging
+	its activity. When built with `debug` support, the plugin executes internal
+	sanity checks during its work and also logs its activity to the standard iRODS
+	log file. Corresponding lines of the file will be marked with the `ISILON RESC`
+	prefix
+6. When the compilation process is finished, you can find the `libisilon.so` file in
+the source code upper level directory. Copy this file to `{iRODS_home}/plugins/resources/`
+7. Create and configure corresponding iRODS resource (see [Configuring](#configuring)
 section below for details)
-
 
 ## Configuring
 The Isilon resource can be registered either as a first class resource or as part
