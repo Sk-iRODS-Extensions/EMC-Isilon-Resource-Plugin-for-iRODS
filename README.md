@@ -180,8 +180,8 @@ allows streaming writes.
 other storage resource type can support it. In this respect, the Isilon resource
 plugin is similar to other "non-POSIX" resource drivers in the iRODS world.
 
-### Isilon-specific limitation, constraints imposed by iRODS, and  areas for improvement:
-1.  **Random writes**
+### Isilon-specific limitation, constraints imposed by iRODS, and areas for improvement:
+1.  **Random writes**  
 Random writes can be explicit or implicit. In the first case they are intended by
 a user (e.g. they may come from some tricky rule). In second case they are a side
 effect of operations that could be potentially implemented without random writes. In
@@ -214,7 +214,7 @@ the iRODS rules file,  `/etc/irods/core.re`, as part of the plugin installation:
 	  
 	A better rule will be provided in the  future restricting the `iput` command
 	only while making no effect to `iget`.
-2. **Isilon cluster authorizarion and access management**
+2. **Isilon cluster authorizarion and access management**  
 The EMC Isilon Plugin for iRODS currently supports only basic authorization with no
 user level authentication.  For proper operation use the Isilon `root` account to
 register the Isilon as iRODS storage resource. This is area for improvement.
@@ -224,39 +224,67 @@ parameters or physical resource status during the registration phase due to a
 defect in iRODS
 [https://github.com/irods/irods/issues/2336](https://github.com/irods/irods/issues/2336).
 This problem is detected and reported only during active command execution.
-4. **Quotas**
+4. **Quotas**  
 The plugin does not implement interface for reporting the space available to iRODS
 user. This is area for improvement.
-5. **Replication**
+5. **Replication**  
 When an Isilon storage resource is used as a target for replication the number of
 data transfer threads on the `irepl` command should be set manually to zero by
 adding the command line option: `-N 0`.
-
-The iRODS utility `irepl` uses multi-stream data-transfers by default. When an Isilon storage resource is the target of a replication, multi-stream `irepl` will fail because it's built upon random writes which are not supported currently by Isilon storage resource. The number of data streams used by `irepl` for transferring data is not affected by the `acSetNumThreads` rule discussed above. That's why one needs to use `-N 0`	option explicitly each time Isilon resource is the target of `irepl`.
-
-The `-N 0` option is not required if an Isilon storage resource is specified as a source for a replication and does not simultaneously appear as a target for replication.
-6. **No support for cache resource**
-The EMC Isilon plugin for iRODS does not allow using the Isilon as `cache` type of iRODS resource within a `compound` resource. This is a limitation imposed by iRODS. No resource type except `unix file system` can be used to represent `cache`. The issue is tracked at [https://github.com/irods/irods/issues/2249](https://github.com/irods/irods/issues/2249)
-7. **Limited support for aliases**
-It is possible to create multiple iRODS storage resources in the same iRODS zone which point to the same physical Isilon storage under multiple names in iRODS. Consider the following examples:
-
-1. The same Isilon physical storage registered from different iRODS resource servers with different iRODS storage resource names:
-	```iadmin mkresc isiResc1 isilon irods_host1:/vault_path "isi_host=vvv.xxx.yyy.zzz;isi_port=8020;isi_user=root"```
-
-	```iadmin mkresc isiResc2 isilon irods_host2:/vault_path "isi_host=vvv.xxx.yyy.zzz;isi_port=8020;isi_user=root"```
-
-2. The same Isilon physical storage registered from the same host using different iRODS storage resource names:
-	```iadmin mkresc isiResc1 isilon irods_host:/vault_path "isi_host=vvv.xxx.yyy.zzz;isi_port=8020;isi_user=root"```
-
-	```iadmin mkresc isiResc2 isilon irods_host:/vault_path "isi_host=vvv.xxx.yyy.zzz;isi_port=8020;isi_user=root"```
-
-In both examples above resources `isiResc1` and `isiResc2` refer to the same space on the Isilon storage array while iRODS consider them as independent resources.
-
-	
-We recommend against using such constructs as it becomes confusing for the iRODS administrator, as well as user, to know the physical location of storage via the storage resource name.
-
-8. **Bundle commands support**
-The iRODS commands `ibun`, `iphybun` are not supported due to a limitation in iRODS tracked at: [https://github.com/irods/irods/issues/2183](https://github.com/irods/irods/issues/2183). The only resource type that supports these commands is `unix file system`.
+  
+	The iRODS utility `irepl` uses multi-stream data-transfers by default. When
+	an Isilon storage resource is the target of a replication, multi-stream
+	`irepl` will fail because it's built upon random writes which are not
+	supported currently by Isilon storage resource. The number of data streams
+	used by `irepl` for transferring data is not affected by the `acSetNumThreads`
+	rule discussed above. That's why one needs to use `-N 0` option explicitly
+	each time Isilon resource is the target of `irepl`.
+  
+	The `-N 0` option is not required if an Isilon storage resource is specified
+	as a source for a replication and does not simultaneously appear as a target
+	for replication.
+6. **No support for cache resource**  
+The EMC Isilon plugin for iRODS does not allow using the Isilon as `cache` type of
+iRODS resource within a `compound` resource. This is a limitation imposed by iRODS.
+No resource type except `unix file system` can be used to represent `cache`. The
+issue is tracked at
+[https://github.com/irods/irods/issues/2249](https://github.com/irods/irods/issues/2249)
+7. **Limited support for aliases**  
+It is possible to create multiple iRODS storage resources in the same iRODS zone
+which point to the same physical Isilon storage under multiple names in iRODS.
+Consider the following examples:
+	  
+	1. The same Isilon physical storage registered from different iRODS
+	resource servers with different iRODS storage resource names:
+		```
+		iadmin mkresc isiResc1 isilon irods_host1:/vault_path "isi_host=vvv.xxx.yyy.zzz;isi_port=8020;isi_user=root"
+		```
+		  
+		```
+		iadmin mkresc isiResc2 isilon irods_host2:/vault_path "isi_host=vvv.xxx.yyy.zzz;isi_port=8020;isi_user=root"
+		```
+	2. The same Isilon physical storage registered from the same host using
+	different iRODS storage resource names:
+		```
+		iadmin mkresc isiResc1 isilon irods_host:/vault_path "isi_host=vvv.xxx.yyy.zzz;isi_port=8020;isi_user=root"
+		```
+		  
+		```
+		iadmin mkresc isiResc2 isilon irods_host:/vault_path "isi_host=vvv.xxx.yyy.zzz;isi_port=8020;isi_user=root"
+		```
+	  
+	In both examples above resources `isiResc1` and `isiResc2` refer to the same
+	space on the Isilon storage array while iRODS consider them as independent
+	resources.
+	  
+	We recommend against using such constructs as it becomes confusing for the
+	iRODS administrator, as well as user, to know the physical location of storage
+	via the storage resource name.
+8. **Bundle commands support**  
+The iRODS commands `ibun`, `iphybun` are not supported due to a limitation in iRODS
+tracked at:
+[https://github.com/irods/irods/issues/2183](https://github.com/irods/irods/issues/2183).
+The only resource type that supports these commands is `unix file system`.
 
 ## External docs
 1. Resource Driver for EMC Isilon: implementation details and performance
