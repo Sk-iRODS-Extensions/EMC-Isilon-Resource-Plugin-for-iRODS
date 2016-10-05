@@ -143,8 +143,10 @@ since the plugin communicates with Isilon cluster through this interface
 manager, you may skip this step. Otherwise (i.e. if you did not install the plugin on
 the ICAT server or did not use a package manager) you should add the following rule to
 iRODS rule base (`/etc/irods/core.re` file):  
-	```acSetNumThreads { ON($KVPairs.rescType == "isilon") { msiSetNumThreads("default", "1","default"); } }```  
-  
+	```
+	acSetNumThreads { ON($KVPairs.rescType == "isilon") { msiSetNumThreads("default", "1","default"); } }
+	```
+	  
 	**NOTE:**  If you're not experienced with iRODS rules, you should add this
 	rule before any other `acSetNumThreads` rules  
   
@@ -155,7 +157,10 @@ iRODS rule base (`/etc/irods/core.re` file):
 	[Limitations and known issues](#limitations-and-known-issues) section below to
 	get more information about this rule   
 3. Register the Isilon resource plugin with command:  
-	```iadmin mkresc <resource name> isilon localhost:/<path> "isi_host=<isilon management adress>;isi_port=8020;isi_user=root"```  
+	```
+	iadmin mkresc <resource name> isilon localhost:/<path> "isi_host=<isilon management adress>;isi_port=8020;isi_user=root"
+	```
+	  
 	Where:  
 	-  `<resource name>` is logical resource name used later in the system  
 	- `<path>` is a path on the isilon file system relative to the `/ifs` directory.
