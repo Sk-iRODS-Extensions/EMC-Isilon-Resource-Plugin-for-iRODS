@@ -294,7 +294,7 @@ in "Proceedings of iRODS User Group Meeting 2015" (page 69) at
 2015 located at
 [https://www.youtube.com/watch?v=5zo-t27u9Nk](https://www.youtube.com/watch?v=5zo-t27u9Nk )
 3. EMC - iRODS resource drivers. Slides used for a talk at iRODS User Group Meeting
-2015.The slides are located at
+2015. The slides are located at
 [https://irods.org/wp-content/uploads/2015/06/Combes-iRODSResourceDrivers.pdf]( https://irods.org/wp-content/uploads/2015/06/Combes-iRODSResourceDrivers.pdf)
 
 ## License
