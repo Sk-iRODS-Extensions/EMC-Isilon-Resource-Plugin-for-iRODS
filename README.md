@@ -218,7 +218,7 @@ the iRODS rules file,  `/etc/irods/core.re`, as part of the plugin installation:
 The EMC Isilon Plugin for iRODS currently supports only basic authorization with no
 user level authentication.  For proper operation use the Isilon `root` account to
 register the Isilon as iRODS storage resource. This is area for improvement.
-3. **Resource registration diagnostic**
+3. **Resource registration diagnostic**  
 The Isilon plugin (as any other plugin) cannot report errors caused by wrong
 parameters or physical resource status during the registration phase due to a
 defect in iRODS
