@@ -174,8 +174,8 @@ Some iRODS functionality cannot be used  with Isilon resource plugin. That is be
 of two reasons:
 
 1. The Isilon plugin uses the efficient object based HDFS protocol to access the
-Isilon storage system. This protocol doesn't support random write access (full POSIX
-semantics), but only allows streaming writes.
+Isilon storage system. This protocol doesn't support random write access, but only
+allows streaming writes.
 2. Some iRODS functionality is limited to a `unix file system` resource only. No
 other storage resource type can support it. In this respect, the Isilon resource
 plugin is similar to other "non-POSIX" resource drivers in the iRODS world.
