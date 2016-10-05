@@ -112,7 +112,7 @@ section below for details)
 3. `git clone https://github.com/Sk-iRODS-Extensions/EMC-Isilon-Resource-Plugin-for-iRODS.git`
 4. `cd irods_resource_plugin_isilon`
 5. `make` or `make debug` 
-
+  
 	Using the Debug target is extremely useful for debugging the plugin and logging
 	its activity. When built with `debug` support, the plugin executes internal
 	sanity checks during its work and also logs its activity to the standard iRODS
@@ -124,50 +124,50 @@ the source code upper level directory. Copy this file to `{iRODS_home}/plugins/r
 section below for details)
 
 ## Configuring
-The Isilon resource can be registered either as a first class resource or as part
-of a hierarchical resource. In both cases some limitations may apply in the use of the
-Isilon resource. See the [Limitations and known issues](#limitations-and-known-issues)
+The Isilon resource can be registered either as a first class resource or as part of
+a hierarchical resource. In both cases some limitations may apply in the use of the
+Isilon resource. See the [Limitations and known problems](#limitations-and-known-problems)
 section below for more information.
 
 Since archival is an important use case for Isilon storage system, we want to
 explicitly state here that no limitations apply to using Isilon iRODS resource as an
 `archive` resource in part of an iRODS `compound` resource definition.
 
-To register an Isilon resource as a first class resource follow the instructions below. Refer to
-the iRODS documentation for instructions on compound/hierarchical resource
+To register an Isilon resource as a first class resource follow the instructions below.
+Refer to the iRODS documentation for instructions on compound/hierarchical resource
 administration.
 
-**1)** Make sure that HDFS license is enabled on the Isilon storage array. It is
-required since the plugin communicates with Isilon cluster through this interface
-
-**2)** If you installed the Isilon resource plugin on the ICAT server using a package manager, you may
-skip this step. Otherwise (i.e. if you did not install the plugin on the ICAT
-server or did not use a package manager) you should add the following rule to iRODS rule
-base (`/etc/irods/core.re` file):
-
+1. Make sure that HDFS license is enabled on the Isilon storage array. It is required
+since the plugin communicates with Isilon cluster through this interface
+2. If you installed the Isilon resource plugin on the ICAT server using a package
+manager, you may skip this step. Otherwise (i.e. if you did not install the plugin on
+the ICAT server or did not use a package manager) you should add the following rule to
+iRODS rule base (`/etc/irods/core.re` file):
 ```
 acSetNumThreads { ON($KVPairs.rescType == "isilon") { msiSetNumThreads("default", "1","default"); } }
 ```
-
-**NOTE:**  If you're not experienced with iRODS rules, you should add this rule before any other `acSetNumThreads` rules
-
-**NOTE:** If you installed the plugin to ICAT server using package manager, the rule should have been added automatically
-
-**NOTE:** You may want to not use this rule at all. Please refer to [Limitations and known issues](#limitations-and-known-issues) section below to get more information about this rule   
-
-**3)** Register the Isilon resource plugin with command:
-
+  
+	**NOTE:**  If you're not experienced with iRODS rules, you should add this
+	rule before any other `acSetNumThreads` rules
+  
+	**NOTE:** If you installed the plugin to ICAT server using package manager, the
+	rule should have been added automatically
+  
+	**NOTE:** You may want to not use this rule at all. Please refer to
+	[Limitations and known issues](#limitations-and-known-issues) section below to
+	get more information about this rule   
+3. Register the Isilon resource plugin with command:
 ```
-iadmin mkresc <resource name> isilon localhost:/<path> "isi_host=<isilon
-management adress>;isi_port=8020;isi_user=root"
+iadmin mkresc <resource name> isilon localhost:/<path> "isi_host=<isilon management adress>;isi_port=8020;isi_user=root"
 ```
-
-Where:
-
--  `<resource name>` is logical resource name used later in the system
-- `<path>` is a path on the isilon file system relative to the `/ifs` directory.
-Your iRODS data will be stored under this path
-- `<isilon management adress>` is the Isilon SmartConnect management address (if SmartConnect is configured. Otherwise you can use any address assigned to the Isilon cluster)
+  
+	Where:
+	-  `<resource name>` is logical resource name used later in the system  
+	- `<path>` is a path on the isilon file system relative to the `/ifs` directory.
+	Your iRODS data will be stored under this path
+	- `<isilon management adress>` is the Isilon SmartConnect management address
+	(if SmartConnect is configured. Otherwise you can use any address assigned to
+	the Isilon cluster)
 
 ## Limitations and known problems
 Some iRODS functionality cannot be used  with Isilon resource plugin. That is
