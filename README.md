@@ -290,8 +290,9 @@ The only resource type that supports these commands is `unix file system`.
 1. Resource Driver for EMC Isilon: implementation details and performance evaluation
 in "Proceedings of iRODS User Group Meeting 2015" (page 69) at
 [http://irods.org/wp-content/uploads/2015/09/UMG2015_P.pdf](http://irods.org/wp-content/uploads/2015/09/UMG2015_P.pdf) 
-2. EMC: Isilon and ECS Resource. Video from iRODS User Group Meeting 2015 located
-at [https://www.youtube.com/watch?v=5zo-t27u9Nk](https://www.youtube.com/watch?v=5zo-t27u9Nk )
+2. EMC: Isilon and ECS Resource Drivers Overview. Video from iRODS User Group Meeting
+2015 located at
+[https://www.youtube.com/watch?v=5zo-t27u9Nk](https://www.youtube.com/watch?v=5zo-t27u9Nk )
 3. EMC - iRODS resource drivers. Slides used for a talk at iRODS User Group Meeting
 2015.The slides are located at
 [https://irods.org/wp-content/uploads/2015/06/Combes-iRODSResourceDrivers.pdf]( https://irods.org/wp-content/uploads/2015/06/Combes-iRODSResourceDrivers.pdf)
