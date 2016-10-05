@@ -154,8 +154,8 @@ iRODS rule base (`/etc/irods/core.re` file):
 	rule should have been added automatically  
   
 	**NOTE:** You may want to not use this rule at all. Please refer to
-	[Limitations and known issues](#limitations-and-known-issues) section below to
-	get more information about this rule   
+	[Limitations and known problems](#limitations-and-known-problems) section below
+	to get more information about this rule   
 3. Register the Isilon resource plugin with command:  
 	```
 	iadmin mkresc <resource name> isilon localhost:/<path> "isi_host=<isilon management adress>;isi_port=8020;isi_user=root"
